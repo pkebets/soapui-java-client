@@ -22,39 +22,29 @@
 			<groupId>com.soapui</groupId>
 			<artifactId>flex-messaging-core</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/flex-messaging-core-1.0.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.soapui</groupId>
 			<artifactId>flex-messaging-proxy</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/flex-messaging-proxy-1.0.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.soapui</groupId>
 			<artifactId>jms</artifactId>
 			<version>1.1</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/jms-1.1.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.soapui</groupId>
 			<artifactId>rsyntaxtextarea</artifactId>
 			<version>2.0.1</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/rsyntaxtextarea-2.0.1.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.soapui</groupId>
 			<artifactId>soapui</artifactId>
 			<version>4.5.2</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/soapui-4.5.2.jar</systemPath>
 		</dependency>
 	</dependencies>
-	
+
 
 	<distributionManagement>
 		<repository>
@@ -66,18 +56,27 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>com.qaprosoft.core.foundation.AbstractTest</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-			</plugin>
+              <artifactId>maven-assembly-plugin</artifactId>
+              <configuration>
+                  <archive>
+                      <manifest>
+                          <addClasspath>true</addClasspath>
+                      </manifest>
+                  </archive>
+                  <descriptorRefs>
+                      <descriptorRef>jar-with-dependencies</descriptorRef>
+                  </descriptorRefs>
+              </configuration>
+              <executions>
+                  <execution>
+                      <id>make-my-jar-with-dependencies</id>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>single</goal>
+                      </goals>
+                  </execution>
+              </executions>
+          </plugin>
 		</plugins>
 	</build>
 </project>
